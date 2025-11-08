@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enfoke</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Enfoke">
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      @keyframes shimmer-glow {
+        0% { transform: translateX(-150%) skewX(-30deg); }
+        100% { transform: translateX(150%) skewX(-30deg); }
+      }
+
+      .task-item-completed::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(52, 211, 153, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        transform: translateX(-150%);
+        animation: shimmer-glow 3s ease-in-out infinite;
+        animation-delay: 0.5s;
+        filter: blur(15px);
+      }
+      
+      /* Animaciones de celebración */
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.3s ease-out forwards;
+      }
+      
+      @keyframes scale-in {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      .animate-scale-in {
+        animation: scale-in 0.3s ease-out forwards;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+            transform: translateY(-10vh) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(110vh) rotate(720deg);
+            opacity: 0;
+        }
+      }
+
+      /* Estilos para el selector de tiempo */
+      .time-scroller {
+        scroll-snap-type: y mandatory;
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+        mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+      }
+      .time-scroller > div {
+        scroll-snap-align: center;
+      }
+      /* Ocultar barra de scroll */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      /* Animación de reflejo para el header - Lenta y Sutil */
+      @keyframes header-shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+
+      .header-shimmer {
+        background-image: linear-gradient(
+          90deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.03) 50%,
+          transparent 70%
+        );
+        background-size: 200% 100%;
+        animation: header-shimmer 15s linear infinite;
+      }
+      
+      /* Nueva animación de pulso para el botón CTA */
+      @keyframes subtle-glow-sweep {
+        0% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+        100% { transform: translateX(100%); } /* Pausa al final */
+      }
+      
+      .cta-button-glow {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .cta-button-glow::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 100%;
+        background: linear-gradient(110deg, transparent 20%, rgba(45, 212, 191, 0.25) 50%, transparent 80%);
+        filter: blur(20px);
+        animation: subtle-glow-sweep 8s ease-in-out infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
