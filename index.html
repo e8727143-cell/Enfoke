@@ -6,12 +6,11 @@
     <title>Enfoke</title>
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="./manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#8b5cf6" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Enfoke">
-    <link rel="apple-touch-icon" href="./icon-192x192.png">
 
     <!-- Tailwind CSS desde CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -108,13 +107,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <!-- Tu aplicación en un solo archivo JS -->
-    <script src="./app.js"></script>
+    <script src="/app.js"></script>
 
     <!-- Registrador del Service Worker -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./service-worker.js').then(registration => {
+          // Usar una ruta absoluta para evitar problemas de origen en entornos sandboxed.
+          navigator.serviceWorker.register('/service-worker.js').then(registration => {
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
           }, err => {
             console.log('ServiceWorker registration failed: ', err);
