@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF--8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enfoke</title>
   
@@ -17,11 +17,13 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
+      background: linear-gradient(to bottom, #111817, #102220);
       -webkit-tap-highlight-color: transparent;
     }
     @keyframes shimmer-glow {
@@ -35,7 +37,7 @@
       left: 0;
       width: 70%;
       height: 100%;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(52, 211, 153, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(19, 236, 218, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
       transform: translateX(-150%);
       animation: shimmer-glow 3s ease-in-out infinite;
       animation-delay: 0.5s;
@@ -65,35 +67,9 @@
     }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-    @keyframes header-shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    .header-shimmer {
-      background-image: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
-      background-size: 200% 100%;
-      animation: header-shimmer 15s linear infinite;
-    }
-    @keyframes subtle-glow-sweep {
-      0% { transform: translateX(-100%); }
-      50% { transform: translateX(100%); }
-      100% { transform: translateX(100%); }
-    }
-    .cta-button-glow { position: relative; overflow: hidden; }
-    .cta-button-glow::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 80%;
-      height: 100%;
-      background: linear-gradient(110deg, transparent 20%, rgba(45, 212, 191, 0.25) 50%, transparent 80%);
-      filter: blur(20px);
-      animation: subtle-glow-sweep 8s ease-in-out infinite;
-    }
   </style>
 </head>
-<body class="bg-slate-900">
+<body>
   <div id="root"></div>
   
   <!-- Dependencias de Producción (UMD) -->
@@ -117,13 +93,21 @@
 
       const TrashIcon = createSvgIcon([h('path', { key: 1, d: "M3 6h18" }), h('path', { key: 2, d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" }), h('line', { key: 3, x1: "10", y1: "11", x2: "10", y2: "17" }), h('line', { key: 4, x1: "14", y1: "11", x2: "14", y2: "17" })]);
       const PlusIcon = createSvgIcon([h('line', { key: 1, x1: "12", y1: "5", x2: "12", y2: "19" }), h('line', { key: 2, x1: "5", y1: "12", x2: "19", y2: "12" })]);
-      const SparklesIcon = createSvgIcon([h('path', { key: 1, d: "m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 18l1.9-5.8 5.8-1.9-5.8-1.9L12 3z" }), h('path', { key: 2, d: "M5 3v4" }), h('path', { key: 3, d: "M19 17v4" }), h('path', { key: 4, d: "M3 5h4" }), h('path', { key: 5, d: "M17 19h4" })]);
       const XIcon = createSvgIcon([h('line', { key: 1, x1: "18", y1: "6", x2: "6", y2: "18" }), h('line', { key: 2, x1: "6", y1: "6", x2: "18", y2: "18" })]);
       const CheckIcon = createSvgIcon([h('polyline', { key: 1, points: "20 6 9 17 4 12" })], { strokeWidth: "3" });
       const ClockIcon = createSvgIcon([h('circle', { key: 1, cx: "12", cy: "12", r: "10" }), h('polyline', { key: 2, points: "12 6 12 12 16 14" })]);
-      const InstallIcon = createSvgIcon([h('path', { key: 1, d: "M12 17V3" }), h('path', { key: 2, d: "m6 11 6 6 6-6" }), h('path', { key: 3, d: "M19 21H5" })]);
-      const BrainIcon = ({ className }) => h('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 72 72", className }, h('path', { fill: "#ffa7c0", d: "M52.482 29.62c-1.251 1.808-.075 3.386 1.104 5.186c1.223 1.868.563 4.303-1.262 5.916a1.353 1.353 0 0 0-.367 1.95c1.242 2.624.357 5.163-2.12 6.738a2.974 2.974 0 0 0-1.117 1.377a4.917 4.917 0 0 1-5.273 3.447a1.902 1.902 0 0 0-1.392.702c-1.422 1.967-3.278 2.355-5.31.918a1.115 1.115 0 0 0-1.553.008c-1.96 1.417-3.89 1.007-5.323-.942a1.925 1.925 0 0 0-1.408-.694a4.72 4.72 0 0 1-5.15-3.371a2.973 2.973 0 0 0-1.12-1.404c-2.651-1.652-3.51-4.269-2.082-7.063c.404-.79.174-1.099-.371-1.576a4.98 4.98 0 0 1-.162-7.77a1.32 1.32 0 0 0 .373-1.753c-1.134-2.796-.305-5.051 2.242-6.69a3.162 3.162 0 0 0 1.147-1.532a4.591 4.591 0 0 1 4.98-3.201a1.446 1.446 0 0 0 1.664-.79a3.38 3.38 0 0 1 5.09-.991a1.227 1.227 0 0 0 1.765.012c1.877-1.348 3.824-.89 5.212.99a2.048 2.048 0 0 0 1.505.73a4.864 4.864 0 0 1 5.183 3.558a3.24 3.24 0 0 0 1.283 1.416a5.234 5.234 0 0 1 2.462 4.828z"}), h('path', { fill: "none", stroke: "#000", strokeMiterlimit: "10", strokeWidth: "2", d: "M36 18.461v37.084" }));
-
+      const BrainIcon = ({ className }) => h('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 72 72", className },
+        h('path', { fill: "#ffa7c0", d: "M52.482 29.62c-1.251 1.808-.075 3.386 1.104 5.186c1.223 1.868.563 4.303-1.262 5.916a1.353 1.353 0 0 0-.367 1.95c1.242 2.624.357 5.163-2.12 6.738a2.974 2.974 0 0 0-1.117 1.377a4.917 4.917 0 0 1-5.273 3.447a1.902 1.902 0 0 0-1.392.702c-1.422 1.967-3.278 2.355-5.31.918a1.115 1.115 0 0 0-1.553.008c-1.96 1.417-3.89 1.007-5.323-.942a1.925 1.925 0 0 0-1.408-.694a4.72 4.72 0 0 1-5.15-3.371a2.973 2.973 0 0 0-1.12-1.404c-2.651-1.652-3.51-4.269-2.082-7.063c.404-.79.174-1.099-.371-1.576a4.98 4.98 0 0 1-.162-7.77a1.32 1.32 0 0 0 .373-1.753c-1.134-2.796-.305-5.051 2.242-6.69a3.162 3.162 0 0 0 1.147-1.532a4.591 4.591 0 0 1 4.98-3.201a1.446 1.446 0 0 0 1.664-.79a3.38 3.38 0 0 1 5.09-.991a1.227 1.227 0 0 0 1.765.012c1.877-1.348 3.824-.89 5.212.99a2.048 2.048 0 0 0 1.505.73a4.864 4.864 0 0 1 5.183 3.558a3.24 3.24 0 0 0 1.283 1.416a5.234 5.234 0 0 1 2.462 4.828Z" }),
+        h('g', { fill: "none", stroke: "#000", strokeWidth: "2" },
+            h('path', { strokeMiterlimit: "10", d: "M52.482 29.62c-1.251 1.808-.075 3.386 1.104 5.186c1.223 1.868.563 4.303-1.262 5.916a1.353 1.353 0 0 0-.367 1.95c1.242 2.624.357 5.163-2.12 6.738a2.974 2.974 0 0 0-1.117 1.377a4.917 4.917 0 0 1-5.273 3.447a1.902 1.902 0 0 0-1.392.702c-1.422 1.967-3.278 2.355-5.31.918a1.115 1.115 0 0 0-1.553.008c-1.96 1.417-3.89 1.007-5.323-.942a1.925 1.925 0 0 0-1.408-.694a4.72 4.72 0 0 1-5.15-3.371a2.973 2.973 0 0 0-1.12-1.404c-2.651-1.652-3.51-4.269-2.082-7.063c.404-.79.174-1.099-.371-1.576a4.98 4.98 0 0 1-.162-7.77a1.32 1.32 0 0 0 .373-1.753c-1.134-2.796-.305-5.051 2.242-6.69a3.162 3.162 0 0 0 1.147-1.532a4.591 4.591 0 0 1 4.98-3.201a1.446 1.446 0 0 0 1.664-.79a3.38 3.38 0 0 1 5.09-.991a1.227 1.227 0 0 0 1.765.012c1.877-1.348 3.824-.89 5.212.99a2.048 2.048 0 0 0 1.505.73a4.864 4.864 0 0 1 5.183 3.558a3.24 3.24 0 0 0 1.283 1.416a5.234 5.234 0 0 1 2.462 4.828ZM36 18.461v37.084" }),
+            h('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M30.675 30.061s3.923-3.944 5.325 1.352m5.325-1.352S37.402 26.117 36 31.413m8.122-4.336s2.659-4.887-2.817-4.717m.02 20.54S37.402 46.846 36 41.55m6.312-5.049s3.96-3.908 5.313 1.4M30.675 42.9s3.923 3.945 5.325-1.35" }),
+            h('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M50.02 24.79s-1.258-1.334-5.298-1.009m-.659 22.808s2.214 5.104-3.225 4.448" }),
+            h('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M49.98 49.317s-1.617 1.292-5.612.608M28.085 27.077s-2.66-4.887 2.817-4.717M29.2 36.501s-3.96-3.908-5.312 1.4" }),
+            h('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M22.137 24.634s1.308-1.178 5.348-.853m.405 22.808s-2.214 5.104 3.225 4.448" }),
+            h('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M21.973 49.317s1.617 1.292 5.612.608" })
+        )
+      );
+      
       // ========== UI COMPONENTS ==========
       function CelebrationAnimation({ show }) {
         if (!show) return null;
@@ -208,16 +192,16 @@
             h('button', { onClick: handleImportanceClick, className: `w-1.5 h-16 rounded-full transition-all duration-300 ${importanceClasses[task.importance || 'normal']}` }),
             h('div', { className: "flex-grow flex flex-col" },
               !task.completed && task.importance !== 'normal' && h('span', { className: `text-xs font-bold uppercase mb-1 ml-4 self-start ${task.importance === 'urgent' ? 'text-red-400/80' : 'text-yellow-400/80'}` }, task.importance),
-              h('div', { className: `relative flex items-center p-4 bg-white/10 rounded-xl group transition-all overflow-hidden ${task.completed ? 'bg-green-500/10 task-item-completed' : ''}` },
-                h('button', { onClick: () => onToggle(task.id), className: `flex-shrink-0 h-7 w-7 border-2 rounded-full flex items-center justify-center ${task.completed ? 'bg-green-500 border-green-400' : 'border-cyan-400'}` },
+              h('div', { className: `relative flex items-center p-4 bg-white/5 rounded-xl group transition-all overflow-hidden ${task.completed ? 'bg-[#13ecda]/10 task-item-completed' : ''}` },
+                h('button', { onClick: () => onToggle(task.id), className: `flex-shrink-0 h-7 w-7 border-2 rounded-full flex items-center justify-center ${task.completed ? 'bg-[#13ecda] border-[#13ecda]/80' : 'border-[#13ecda]'}` },
                   task.completed && h(CheckIcon, { className: 'h-4 w-4 text-white' })
                 ),
                 h('div', { className: 'ml-4 flex-grow min-w-0' },
                   h('span', { className: `text-lg text-slate-100 block truncate ${task.completed ? 'line-through text-slate-400' : ''}` }, task.text),
-                  task.time && h('span', { className: 'text-sm text-cyan-400/80 font-semibold' }, task.time)
+                  task.time && h('span', { className: 'text-sm text-[#13ecda]/80 font-semibold' }, task.time)
                 ),
                 h('div', { className: "flex items-center gap-2 opacity-0 group-hover:opacity-100" },
-                  h('button', { onClick: () => setIsTimeSelectorOpen(true), className: 'text-slate-500 hover:text-cyan-400' }, h(ClockIcon, { className: 'h-5 w-5' })),
+                  h('button', { onClick: () => setIsTimeSelectorOpen(true), className: 'text-slate-500 hover:text-[#13ecda]' }, h(ClockIcon, { className: 'h-5 w-5' })),
                   h('button', { onClick: () => onDelete(task.id), className: 'text-slate-500 hover:text-red-400' }, h(TrashIcon, { className: 'h-6 w-6' }))
                 )
               )
@@ -277,12 +261,242 @@
         );
       }
       
+      function TreeIcon({ className }) {
+        return h('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 72 72", className },
+            h('path', { fill: "#b1cc33", d: "M51.56 17.73c-.509.003-1.018.034-1.524.091l-.673.072l-.317-.6c-2.673-5.047-8.5-8.308-14.854-8.308c-9.026 0-16.369 6.4-16.369 14.268c.002.517.035 1.032.1 1.544l.1.824l-.792.251c-4.015 1.272-6.608 4.186-6.608 7.421c0 4.445 4.851 8.061 10.813 8.061a13.17 13.17 0 0 0 6.584-1.688l.591-.34l.19.15l.343.275c2.714 2.167 7.082 3.462 11.683 3.462c7.763 0 14.32-3.69 14.32-8.06a4.411 4.411 0 0 0-.077-.806l-.139-.75l-.021-.118l.842-.266c4.021-1.27 6.621-4.185 6.621-7.425c.002-4.439-4.85-8.058-10.813-8.058z" }),
+            h('path', { fill: "#5c9e31", d: "M39.468 27.997s4.917 7.331 15.443 5.488l.891 3.572l-4 4.922l-9.214 2.032l-12.13-2.555l-1.846-2.126A17.56 17.56 0 0 0 39.47 27.997z" }),
+            h('g', { fill: "none", stroke: "#000", strokeLinecap: "round", strokeWidth: "2" },
+                h('path', { strokeLinejoin: "round", d: "M35.789 63.943V52.776l-7.63-7.516m7.63 7.516l4.368-4.546" }),
+                h('path', { strokeMiterlimit: "10", d: "M63.374 25.773c0-5-5.289-9.06-11.813-9.06a15.38 15.38 0 0 0-1.63.1c-2.764-5.217-8.763-8.84-15.739-8.84c-9.593 0-17.369 6.836-17.369 15.268c.002.558.038 1.114.108 1.667c-4.288 1.36-7.306 4.595-7.306 8.374c0 5 5.29 9.061 11.813 9.061c2.48.021 4.922-.607 7.084-1.822c2.791 2.23 7.257 3.681 12.307 3.681c8.461 0 15.32-4.057 15.32-9.06a5.464 5.464 0 0 0-.094-.987c4.294-1.36 7.32-4.598 7.32-8.382z" })
+            )
+        );
+      }
+
+      function ActiveTimerScreen({ timeLeft, duration, onStop }) {
+        const radius = 56;
+        const circumference = 2 * Math.PI * radius;
+        const progress = duration > 0 ? (timeLeft / duration) : 0;
+        const strokeDashoffset = circumference * (1 - progress);
+
+        const formatTime = (seconds) => {
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            return `${mins}:${secs}`;
+        };
+
+        return h('div', { className: 'relative flex h-full w-full flex-col bg-gradient-to-br from-[#43A047] to-[#00796B]' },
+            h('header', { className: 'h-16 flex-shrink-0' }),
+            h('main', { className: 'flex flex-grow flex-col items-center justify-center p-6 text-center text-white' },
+                h('div', { className: 'relative flex h-80 w-80 items-center justify-center' },
+                    h('svg', { className: 'h-full w-full', viewBox: '0 0 120 120' },
+                        h('circle', { className: 'text-white/20', cx: 60, cy: 60, fill: 'transparent', r: radius, stroke: 'currentColor', strokeWidth: 8 }),
+                        h('circle', {
+                            className: 'text-white',
+                            style: {
+                                transition: 'stroke-dashoffset 0.35s',
+                                transform: 'rotate(-90deg)',
+                                transformOrigin: '50% 50%',
+                                strokeDasharray: circumference,
+                                strokeDashoffset: strokeDashoffset
+                            },
+                            cx: 60, cy: 60, fill: 'transparent', r: radius, stroke: 'currentColor', strokeLinecap: 'round', strokeWidth: 8
+                        })
+                    ),
+                    h('div', { className: 'absolute flex flex-col items-center justify-center' },
+                        h(TreeIcon, { className: 'w-24 h-24' }),
+                        h('p', { className: 'mt-2 text-5xl font-bold tracking-tight text-white' }, formatTime(timeLeft))
+                    )
+                ),
+                h('p', { className: 'mt-8 text-lg font-normal leading-normal text-white/90' }, 'Sesión en curso')
+            ),
+            h('footer', { className: 'flex flex-shrink-0 items-center justify-center p-8 pb-12' },
+                h('button', {
+                    onClick: onStop,
+                    className: 'flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white text-[#111817] shadow-lg transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95'
+                },
+                    h('span', { className: 'material-symbols-outlined text-[#00796B]', style: { fontSize: '40px' } }, 'stop')
+                )
+            )
+        );
+      }
+
+
+      function FocusTimer({ isOpen, onClose }) {
+        const SUPABASE_URL = 'https://diksvhkjuexnyoqlrbjz.supabase.co/storage/v1/object/public/audio_assets';
+        const sounds = [
+            { name: 'Lluvia', file: 'light-rain.mp3', icon: 'water_drop' },
+            { name: 'Bosque', file: 'forest.mp3', icon: 'forest' },
+            { name: 'Olas', file: 'waves.mp3', icon: 'waves' },
+            { name: 'Fuego', file: 'fireplace.mp3', icon: 'local_fire_department' },
+            { name: 'Cafetería', file: 'cafe-ambience.mp3', icon: 'coffee' },
+            { name: 'Viento', file: 'wind.mp3', icon: 'air' },
+            { name: 'Noche', file: 'night-ambience.mp3', icon: 'raven' },
+            { name: 'LoFi', file: 'lofi-chill.mp3', icon: 'thunderstorm' },
+            { name: 'Río', file: 'calm-river.mp3', icon: 'graphic_eq' }
+        ];
+
+        const [duration, setDuration] = useState(25 * 60);
+        const [timeLeft, setTimeLeft] = useState(duration);
+        const [isRunning, setIsRunning] = useState(false);
+        const [activeSound, setActiveSound] = useState(null);
+
+        const audioRef = useRef(null);
+        const endTimerAudioRef = useRef(null);
+        const intervalRef = useRef(null);
+        const dragStartRef = useRef({ y: 0, duration: 0 });
+
+        useEffect(() => {
+          if (isRunning) {
+            intervalRef.current = setInterval(() => {
+              setTimeLeft(prev => {
+                if (prev <= 1) {
+                  clearInterval(intervalRef.current);
+                  setIsRunning(false);
+                  if (audioRef.current) audioRef.current.pause();
+                  if (endTimerAudioRef.current) {
+                    endTimerAudioRef.current.play().catch(e => console.error("Error playing end timer sound:", e));
+                  }
+                  return 0;
+                }
+                return prev - 1;
+              });
+            }, 1000);
+          } else {
+            clearInterval(intervalRef.current);
+          }
+          return () => clearInterval(intervalRef.current);
+        }, [isRunning]);
+        
+        useEffect(() => {
+          if (!isRunning) setTimeLeft(duration);
+        }, [duration]);
+
+        useEffect(() => {
+            if (!isOpen) {
+              setIsRunning(false);
+              if (audioRef.current) audioRef.current.pause();
+              setActiveSound(null);
+            }
+        }, [isOpen]);
+
+        const formatTime = (seconds) => {
+          const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+          const secs = String(seconds % 60).padStart(2, '0');
+          return `${mins}:${secs}`;
+        };
+        
+        const handleStop = () => {
+          setIsRunning(false);
+          if(audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+          }
+          setActiveSound(null);
+          setTimeLeft(duration);
+        };
+
+        const handleStartPause = () => setIsRunning(prev => !prev);
+        
+        const handleSoundClick = (soundFile) => {
+          if (!audioRef.current) return;
+          const soundUrl = `${SUPABASE_URL}/${soundFile}`;
+          
+          if (activeSound === soundUrl && !audioRef.current.paused) {
+            audioRef.current.pause();
+            setActiveSound(null);
+          } else {
+            if (!audioRef.current.paused) audioRef.current.pause();
+            audioRef.current.src = soundUrl;
+            audioRef.current.play().then(() => setActiveSound(soundUrl)).catch(error => {
+              console.error("Error playing audio:", error);
+              setActiveSound(null);
+            });
+          }
+        };
+        
+        const handleDragStart = (e) => {
+          if (isRunning) return;
+          const y = e.touches ? e.touches[0].clientY : e.clientY;
+          dragStartRef.current = { y, duration };
+        };
+
+        const handleDragMove = (e) => {
+          if (dragStartRef.current.y === 0 || isRunning) return;
+          const y = e.touches ? e.touches[0].clientY : e.clientY;
+          const deltaY = dragStartRef.current.y - y;
+          const newDuration = dragStartRef.current.duration + Math.round(deltaY / 2) * 60;
+          const clampedDuration = Math.max(60, Math.min(newDuration, 120 * 60));
+          setDuration(clampedDuration);
+        };
+        
+        const handleDragEnd = () => {
+          dragStartRef.current = { y: 0, duration: 0 };
+        };
+        
+        const setupScreen = h(Fragment, null,
+          h('header', { className: 'flex items-center p-4 pb-2 justify-between shrink-0' },
+            h('div', { className: 'flex size-12 shrink-0 items-center' }),
+            h('h1', { className: 'text-white text-lg font-bold' }, 'Sesión de Enfoque'),
+            h('div', { className: 'flex w-12 items-center justify-end' },
+              h('button', { onClick: onClose, className: 'flex items-center justify-center rounded-xl h-12 w-12' },
+                h('span', { className: 'material-symbols-outlined text-white text-3xl' }, 'close')
+              )
+            )
+          ),
+          h('main', { className: 'flex-grow flex flex-col items-center justify-center px-4' },
+            h('div', { className: 'flex flex-col items-center -mt-12' },
+              h('div', {
+                  className: 'flex flex-col items-center justify-center',
+                  onTouchStart: handleDragStart, onTouchMove: handleDragMove, onTouchEnd: handleDragEnd,
+                  onMouseDown: handleDragStart, onMouseMove: handleDragMove, onMouseUp: handleDragEnd, onMouseLeave: handleDragEnd
+                },
+                h('div', { className: 'relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center' },
+                  h('div', { className: 'z-10 text-center' },
+                    h('h2', { className: 'text-7xl sm:text-8xl font-bold tracking-tighter text-white' }, formatTime(timeLeft))
+                  )
+                )
+              ),
+              h('div', { className: 'w-full max-w-sm -mt-4' },
+                !isRunning && h('p', { className: 'text-base text-center font-normal text-white/70 mb-4' }, 'Desliza para ajustar'),
+                h('button', { 
+                    onClick: handleStartPause, 
+                    className: 'w-full h-14 rounded-full text-white text-lg font-bold bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors mb-4'
+                }, 'Iniciar'),
+                h('div', { className: 'grid grid-cols-3 gap-3' },
+                  sounds.map(sound => {
+                    const isActive = activeSound === `${SUPABASE_URL}/${sound.file}`;
+                    return h('button', { 
+                      key: sound.name,
+                      onClick: () => handleSoundClick(sound.file),
+                      className: `flex aspect-square gap-2 rounded-xl border p-2 flex-col justify-center items-center text-center cursor-pointer transition-colors ${isActive ? 'border-[#13ecda] bg-[#13ecda]/20' : 'border-white/20 bg-white/10'}`
+                    },
+                      h('span', { className: `material-symbols-outlined text-2xl ${isActive ? 'text-[#13ecda]' : 'text-white'}` }, sound.icon),
+                      h('h2', { className: `text-sm font-bold leading-tight ${isActive ? 'text-[#13ecda]' : 'text-white'}` }, sound.name)
+                    )
+                  })
+                )
+              )
+            )
+          )
+        );
+
+        return h('div', {
+            className: `fixed inset-0 bg-gradient-to-b from-[#2E8B57] to-[#004d40] text-white z-40 transition-transform duration-500 ease-in-out flex flex-col font-['Manrope'] ${isOpen ? 'translate-y-0' : 'translate-y-full'}`
+          },
+          isRunning
+            ? h(ActiveTimerScreen, { timeLeft, duration, onStop: handleStop })
+            : setupScreen,
+          h('audio', { ref: audioRef, loop: true }),
+          h('audio', { ref: endTimerAudioRef, src: `${SUPABASE_URL}/end_timer.mp3` })
+        );
+      }
+      
       // ========== APP COMPONENT ==========
       function App() {
         const [tasks, setTasks] = useState([]);
         const [isModalOpen, setIsModalOpen] = useState(false);
+        const [isFocusTimerOpen, setIsFocusTimerOpen] = useState(false);
         const [showCelebration, setShowCelebration] = useState(false);
-        const [installPrompt, setInstallPrompt] = useState(null);
 
         const predefinedTasks = ['Leer un capítulo de un libro', 'Hacer 15 minutos de ejercicio', 'Meditar por 5 minutos', 'Organizar el escritorio', 'Salir a correr', 'Llamar a un amigo o familiar', 'Beber un vaso de agua', 'Planificar el día de mañana'];
 
@@ -298,13 +512,6 @@
         useEffect(() => {
           localStorage.setItem('enfoke-tasks', JSON.stringify(tasks));
         }, [tasks]);
-
-        // Manejar el evento de instalación de PWA
-        useEffect(() => {
-          const handleInstallPrompt = e => { e.preventDefault(); setInstallPrompt(e); };
-          window.addEventListener('beforeinstallprompt', handleInstallPrompt);
-          return () => window.removeEventListener('beforeinstallprompt', handleInstallPrompt);
-        }, []);
 
         const handleAddTask = useCallback(({ text, importance, time }) => {
           if (text.trim() && !tasks.some(t => t.text === text.trim())) {
@@ -332,35 +539,47 @@
           setTasks(prev => prev.map(t => (t.id === id ? { ...t, time: time || null } : t)));
         }, []);
 
-        const handleInstallClick = async () => {
-          if (!installPrompt) return;
-          installPrompt.prompt();
-          const { outcome } = await installPrompt.userChoice;
-          if (outcome === 'accepted') setInstallPrompt(null);
-        };
-        
         const sortedTasks = [...tasks].sort((a, b) => (a.time || '23:59').localeCompare(b.time || '23:59'));
+        
+        const emptyState = h('div', { className: "flex flex-col p-2" },
+            h('div', { className: "flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-white/20 px-6 py-14 bg-white/5 backdrop-blur-sm" },
+                h('div', { className: "flex max-w-[480px] flex-col items-center gap-2" },
+                    h('p', { className: "text-white text-lg font-bold leading-tight tracking-[-0.015em] text-center" }, 'Añade tu primera tarea'),
+                    h('p', { className: "text-white/70 text-sm font-normal leading-normal text-center" }, 'Tus tareas aparecerán aquí una vez que las hayas creado.')
+                )
+            )
+        );
 
         const mainContent = tasks.length > 0
-          ? h('div', { className: "p-4 space-y-4" }, sortedTasks.map(task => h(TaskItem, { key: task.id, task, onToggle: handleToggleTask, onDelete: handleDeleteTask, onSetImportance: handleSetImportance, onSetTime: handleSetTime })))
-          : h('div', { className: "min-h-[20rem] flex flex-col items-center justify-center text-center p-8 text-slate-400" }, h(SparklesIcon, { className: 'w-16 h-16 mb-4 opacity-30' }), h('h2', { className: "text-xl font-semibold text-slate-300" }, '¡Todo despejado!'), h('p', null, 'Pulsa "Añadir Tarea" para empezar.'));
+          ? h('div', { className: "space-y-4 p-2" }, sortedTasks.map(task => h(TaskItem, { key: task.id, task, onToggle: handleToggleTask, onDelete: handleDeleteTask, onSetImportance: handleSetImportance, onSetTime: handleSetTime })))
+          : emptyState;
 
-        return h('div', { className: "min-h-screen w-full bg-slate-900 text-white flex flex-col" },
-          h('header', { className: 'relative w-full py-3 px-6 text-center bg-gradient-to-r from-blue-900 to-cyan-800 shadow-lg header-shimmer' },
-            h('h1', { className: 'text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-300' }, 'Enfoke')
-          ),
-          h('main', { className: 'w-full max-w-2xl mx-auto flex flex-col h-full flex-grow px-4 sm:px-6 pt-6' },
-            installPrompt && h('div', { className: 'mb-4' },
-              h('button', { onClick: handleInstallClick, className: 'w-full flex items-center justify-center gap-3 py-3 text-lg bg-teal-600/80 border-2 border-teal-500 rounded-full' }, h(InstallIcon, { className: 'w-6 h-6' }), h('span', null, 'Instalar App'))
+        return h('div', { className: "relative min-h-screen w-full text-white flex flex-col font-['Manrope']" },
+            h('div', { className: `transition-transform duration-500 ease-in-out h-full flex flex-col ${isFocusTimerOpen ? '-translate-y-full' : 'translate-y-0'}`},
+                h('header', { className: 'flex items-center p-4 pt-6 pb-2 justify-center' },
+                    h('h1', { className: 'text-white text-lg font-bold tracking-[-0.015em]' }, 'ENFOKE')
+                ),
+                h('main', { className: 'flex flex-1 flex-col px-4 pt-4 overflow-y-auto' },
+                    h('div', { className: 'px-2 py-3' },
+                        h('button', {
+                            onClick: () => setIsModalOpen(true),
+                            'aria-label': 'Añadir nueva tarea',
+                            className: 'flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 bg-[#13ecda] text-[#102220] text-base font-bold tracking-[0.015em]'
+                        }, h('span', { className: 'truncate' }, 'Añadir tarea'))
+                    ),
+                    mainContent
+                )
             ),
-            h('div', { className: 'mb-4' },
-              h('button', { onClick: () => setIsModalOpen(true), className: 'cta-button-glow w-full flex items-center justify-center gap-2 py-4 text-lg bg-slate-800/50 border-2 border-slate-700 rounded-full text-slate-300 hover:border-teal-500' }, h(PlusIcon, { className: 'w-6 h-6' }), h('span', null, 'Añadir Tarea'))
+            h('footer', { className: `sticky bottom-0 flex justify-center items-center p-5 z-30 transition-all duration-300 ease-in-out ${isFocusTimerOpen ? 'opacity-0 translate-y-full' : 'opacity-100 translate-y-0'}` },
+                h('button', {
+                    onClick: () => setIsFocusTimerOpen(true),
+                    title: 'Modo Concentración',
+                    className: 'flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#13ecda] text-[#102220] shadow-lg shadow-[#13ecda]/20'
+                }, h(BrainIcon, { className: 'w-10 h-10' }))
             ),
-            h('div', { className: 'bg-slate-800/50 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col mb-6' }, mainContent)
-          ),
-          h(SuggestedTasksModal, { isOpen: isModalOpen, onClose: () => setIsModalOpen(false), onConfirm: handleAddTask, suggestions: predefinedTasks }),
-          h(CelebrationAnimation, { show: showCelebration }),
-          h('button', { className: 'fixed bottom-6 left-1/2 -translate-x-1/2 w-20 h-20 bg-slate-800 border-2 border-cyan-400/50 rounded-full shadow-lg flex items-center justify-center', title: 'Modo Concentración (próximamente)' }, h(BrainIcon, { className: 'w-11 h-11 text-cyan-300' }))
+            h(SuggestedTasksModal, { isOpen: isModalOpen, onClose: () => setIsModalOpen(false), onConfirm: handleAddTask, suggestions: predefinedTasks }),
+            h(CelebrationAnimation, { show: showCelebration }),
+            h(FocusTimer, { isOpen: isFocusTimerOpen, onClose: () => setIsFocusTimerOpen(false) })
         );
       }
       
