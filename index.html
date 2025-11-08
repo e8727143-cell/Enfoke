@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enfoke</title>
     
@@ -14,7 +13,7 @@
     <meta name="apple-mobile-web-app-title" content="Enfoke">
     <link rel="apple-touch-icon" href="./icon-192x192.png">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS desde CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
@@ -27,12 +26,10 @@
         font-family: 'Inter', sans-serif;
         -webkit-tap-highlight-color: transparent;
       }
-
       @keyframes shimmer-glow {
         0% { transform: translateX(-150%) skewX(-30deg); }
         100% { transform: translateX(150%) skewX(-30deg); }
       }
-
       .task-item-completed::after {
         content: '';
         position: absolute;
@@ -46,8 +43,6 @@
         animation-delay: 0.5s;
         filter: blur(15px);
       }
-      
-      /* Animaciones de celebración */
       @keyframes fade-in {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -55,7 +50,6 @@
       .animate-fade-in {
         animation: fade-in 0.3s ease-out forwards;
       }
-      
       @keyframes scale-in {
         from { transform: scale(0.8); opacity: 0; }
         to { transform: scale(1); opacity: 1; }
@@ -63,19 +57,10 @@
       .animate-scale-in {
         animation: scale-in 0.3s ease-out forwards;
       }
-
       @keyframes confetti-fall {
-        0% {
-            transform: translateY(-10vh) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(110vh) rotate(720deg);
-            opacity: 0;
-        }
+        0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
       }
-
-      /* Estilos para el selector de tiempo */
       .time-scroller {
         scroll-snap-type: y mandatory;
         -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
@@ -84,44 +69,23 @@
       .time-scroller > div {
         scroll-snap-align: center;
       }
-      /* Ocultar barra de scroll */
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
-      .scrollbar-hide {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-
-      /* Animación de reflejo para el header - Lenta y Sutil */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       @keyframes header-shimmer {
         0% { background-position: -200% 0; }
         100% { background-position: 200% 0; }
       }
-
       .header-shimmer {
-        background-image: linear-gradient(
-          90deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.03) 50%,
-          transparent 70%
-        );
+        background-image: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
         background-size: 200% 100%;
         animation: header-shimmer 15s linear infinite;
       }
-      
-      /* Nueva animación de pulso para el botón CTA */
       @keyframes subtle-glow-sweep {
         0% { transform: translateX(-100%); }
         50% { transform: translateX(100%); }
-        100% { transform: translateX(100%); } /* Pausa al final */
+        100% { transform: translateX(100%); }
       }
-      
-      .cta-button-glow {
-        position: relative;
-        overflow: hidden;
-      }
-      
+      .cta-button-glow { position: relative; overflow: hidden; }
       .cta-button-glow::before {
         content: '';
         position: absolute;
@@ -134,29 +98,19 @@
         animation: subtle-glow-sweep 8s ease-in-out infinite;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
-  }
-}
-</script>
-<!-- 1. Add Babel for in-browser TSX/JSX transformation -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
   <body class="bg-slate-900">
     <div id="root"></div>
-    <!-- 2. Change script type to 'text/babel' and add 'data-type="module"' -->
-    <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
-    <!-- 
-      Service Worker registration is temporarily disabled to prevent a cross-origin
-      error specific to this development environment. The code is correct for a
-      production deployment.
+    
+    <!-- Dependencias de Producción (UMD) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Tu aplicación en un solo archivo JS -->
+    <script src="./app.js"></script>
+
+    <!-- Registrador del Service Worker -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -168,6 +122,5 @@
         });
       }
     </script>
-    -->
   </body>
 </html>

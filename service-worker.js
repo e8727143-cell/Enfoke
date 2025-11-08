@@ -1,11 +1,10 @@
-
-const CACHE_NAME = 'zenith-tasks-v1';
+const CACHE_NAME = 'enfoke-pwa-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  // Note: Since JS/TSX files are bundled, we can't cache them by name directly.
-  // A more robust setup would use a build tool to inject hashed asset names here.
-  // For this simple case, we cache the essentials.
+  '/app.js',
+  'https://cdn.tailwindcss.com',
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
 ];
 
 self.addEventListener('install', event => {
@@ -22,6 +21,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
+        // Cache hit - return response
         if (response) {
           return response;
         }
