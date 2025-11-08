@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Task } from './types';
-import { TaskItem } from './components/TaskItem';
-import { PlusIcon, BrainIcon, SparklesIcon, InstallIcon } from './components/Icons';
-import { SuggestedTasksModal } from './components/SuggestedTasksModal';
-import { CelebrationAnimation } from './components/CelebrationAnimation';
-import { FocusTimer } from './components/FocusTimer';
-import { supabase } from './lib/supabase';
+import { Task } from './types.ts';
+import { TaskItem } from './components/TaskItem.tsx';
+import { PlusIcon, BrainIcon, SparklesIcon, InstallIcon } from './components/Icons.tsx';
+import { SuggestedTasksModal } from './components/SuggestedTasksModal.tsx';
+import { CelebrationAnimation } from './components/CelebrationAnimation.tsx';
+import { FocusTimer } from './components/FocusTimer.tsx';
+import { supabase } from './lib/supabase.ts';
 
 const predefinedTasks = [
     'Leer un capítulo de un libro',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { XIcon } from './Icons';
+import { XIcon } from './Icons.tsx';
 
 interface TimeSelectorProps {
   isOpen: boolean;

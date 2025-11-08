@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { XIcon, RunningIcon, ClockIcon } from './Icons';
-import { Task } from '../types';
-import { TimeSelector } from './TimeSelector';
+import { XIcon, RunningIcon, ClockIcon } from './Icons.tsx';
+import { Task } from '../types.ts';
+import { TimeSelector } from './TimeSelector.tsx';
 
 interface SuggestedTasksModalProps {
   isOpen: boolean;

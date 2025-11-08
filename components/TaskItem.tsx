@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Task } from '../types';
-import { TrashIcon, RunningIcon, CheckIcon, ClockIcon } from './Icons';
-import { TimeSelector } from './TimeSelector';
+import { Task } from '../types.ts';
+import { TrashIcon, RunningIcon, CheckIcon, ClockIcon } from './Icons.tsx';
+import { TimeSelector } from './TimeSelector.tsx';
 
 interface TaskItemProps {
   task: Task;

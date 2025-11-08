@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { FocusTreeIcon, XIcon } from './Icons';
+import { FocusTreeIcon, XIcon } from './Icons.tsx';
 
 interface FocusTimerProps {
   isOpen: boolean;
