@@ -146,10 +146,13 @@
   }
 }
 </script>
+<!-- 1. Add Babel for in-browser TSX/JSX transformation -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
   <body class="bg-slate-900">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <!-- 2. Change script type to 'text/babel' and add 'data-type="module"' -->
+    <script type="text/babel" data-type="module" src="/index.tsx"></script>
     <!-- 
       Service Worker registration is temporarily disabled to prevent a cross-origin
       error specific to this development environment. The code is correct for a
