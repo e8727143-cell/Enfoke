@@ -146,13 +146,14 @@
   }
 }
 </script>
-  <!-- Babel Standalone to transpile JSX/TSX in the browser -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
   <body class="bg-slate-900">
     <div id="root"></div>
-    <!-- Changed type to "text/babel" to be processed by Babel -->
-    <script type="text/babel" data-type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
+    <!-- 
+      Service Worker registration is temporarily disabled to prevent a cross-origin
+      error specific to this development environment. The code is correct for a
+      production deployment.
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -164,5 +165,6 @@
         });
       }
     </script>
+    -->
   </body>
 </html>
